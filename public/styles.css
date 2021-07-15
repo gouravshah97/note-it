@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+:root{
+  --col:red;
+  --text-col:red;
+}
+
 html {
   font-family: "Patrick Hand", cursive;
 }
@@ -67,12 +72,7 @@ footer p {
   word-wrap: break-word;
 }
 
-.note p {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
+
 
 .note button {
   position: relative;
@@ -94,7 +94,7 @@ form.create-note {
   background: #fff;
   padding: 15px;
   border-radius: 7px;
-  box-shadow: 0 10px 50px #000000;
+  
 }
 
 form.create-note input,
@@ -127,6 +127,11 @@ form.create-note button {
 
 .size {
   min-height: 7rem;
+  text-align: left;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 /* The Modal (background) */
@@ -160,7 +165,7 @@ form.create-note button {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 60%;
+  width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -169,7 +174,7 @@ form.create-note button {
   background: #ffffff;
   border-radius: 7px;
   box-shadow: 0 5px 20px #000000;
-  min-height: 11.5rem;
+  min-height: 20.5rem;
 }
 
 /* Add Animation */
@@ -231,11 +236,12 @@ form.create-note button {
 }
 
 .modal-body {
-  padding: 2px 16px;
-  margin-top: 50px;
+
+
   background-color: #ffffff;
   font-size: 18px;
-  font-family: sans-serif;
+  margin: 5px;
+
   font-weight: lighter;
 }
 
@@ -264,4 +270,38 @@ form.create-note button {
   font-size: 20px;
   font-weight: bolder;
   margin-top: 10px;
+}
+
+li{
+  margin-left: 40px;
+}
+
+ul{
+  margin-right: 20px;
+}
+
+
+.ck-editor__editable{
+  background-color: var(--col) !important;
+  min-height: 20.5rem;
+  outline-color: var(--text-col) !important;
+}
+
+ table,tr,td{
+   border: 1px double  var(--text-col) !important;
+}
+
+th{
+   border: 3px solid   var(--text-col) !important;
+
+}
+
+
+.ck-toolbar,.ck-toolbar__items{
+  background-color: var(--col) !important;
+}
+
+.ck-button {
+  color: var(--text-col) !important;
+
 }

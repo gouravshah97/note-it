@@ -21,6 +21,7 @@ function CreateArea(props) {
     event.preventDefault();
     if(!(input.title.trim()==="" || input.content.trim()==="" )){
       props.addNote(input);
+    
       setInput({title: "",content: "",color:"#000000",backgroundColor:"#ffffff"});
       setReadyToWrite(false);
     }

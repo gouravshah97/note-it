@@ -6,7 +6,7 @@ function Header() {
   return (
     <header>
       <h1><SpeakerNotesIcon fontSize='medium'/>&nbsp;NOTE IT!!!</h1>
-      <p className="clock"><Clock /></p>
+      <div className="clock"><Clock /></div>
     </header>
   );
 }

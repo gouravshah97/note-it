@@ -1,5 +1,6 @@
 import React ,{useState}from "react";
-
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 function Pop(props) {
 
@@ -12,6 +13,8 @@ function Pop(props) {
   const[showCross,setShowCross]=useState(true);
 
   function modify(event){
+
+    console.log(event);
       const {name,value} = event.target;
     setModifiedNote(prev=>{
       return({
@@ -38,8 +41,27 @@ function Pop(props) {
       </div>
       <hr/>
       <div className="modal-body" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}}>
-        <textarea rows="15" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}} className="input-field" contentEditable="true" name="content" onChange={modify} value={modifiedNote.content} autoComplete="off" />
+       <textarea  hidden rows="15" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}} className="input-field"  name="content" onChange={modify} value={modifiedNote.content} autoComplete="off" >
+       </textarea>
 
+      <CKEditor name="content"
+                editor={ ClassicEditor }
+                data={modifiedNote.content}
+                config={{
+              /*  removePlugins:['MediaEmbed']*/
+              toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList',  'insertTable',
+         'tableColumn', 'tableRow', 'mergeTableCells',  '|', 'undo', 'redo']
+
+          }}
+                onChange={ ( event, editor ) => {
+                    modifiedNote.content=editor.getData();
+
+                } }
+
+            />
+
+ { document.documentElement.style.setProperty("--col",modifiedNote.backgroundColor)}
+{document.documentElement.style.setProperty("--text-col",modifiedNote.color)}
       </div>
 
     </div>
