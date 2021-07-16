@@ -19,9 +19,9 @@ function CreateArea(props) {
 
   function saveNote(event){
     event.preventDefault();
-    if(!(input.title.trim()==="" || input.content.trim()==="" )){
+    if(!(input.title.trim()==="" )){
       props.addNote(input);
-    
+
       setInput({title: "",content: "",color:"#000000",backgroundColor:"#ffffff"});
       setReadyToWrite(false);
     }
@@ -38,7 +38,7 @@ function CreateArea(props) {
      <div>
 
     <form className="create-note" style={{backgroundColor:input.backgroundColor}}>
-    {readyToWrite && <div><input name = "title"  placeholder = "Title" style={{backgroundColor:input.backgroundColor,color:input.color}} onChange = {handleInput} value = {input.title} autoComplete = "off" / ><hr /></div>}
+    {readyToWrite && <div><input name = "title"  placeholder = "Title (Mandatory)" style={{backgroundColor:input.backgroundColor,color:input.color}} onChange = {handleInput} value = {input.title} autoComplete = "off" / ><hr /></div>}
 
     <textarea name = "content" placeholder = "Start jotting down...." rows = {readyToWrite?"5":"1"} onClick={writingDetected} onChange = {handleInput} value = {input.content} style={{backgroundColor:input.backgroundColor,color:input.color}}/>
     { readyToWrite &&

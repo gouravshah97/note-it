@@ -47,6 +47,10 @@ function App() {
     setShowNote(false);
   }
 
+  function cancelEdit(){
+    setShowNote(false);
+  }
+
 
 
 
@@ -55,7 +59,7 @@ function App() {
   return (<div className="wrap">
     <div className="container">
       <Header />
-       {showNote && <Pop closeFullNote={closeFullNote} activeNote={activeNote} index={noteList.indexOf(activeNote)}/>}
+       {showNote && <Pop closeFullNote={closeFullNote} cancelEdit={cancelEdit} activeNote={activeNote} index={noteList.indexOf(activeNote)}/>}
       <CreateArea addNote={addNote}/>
 
       {noteList.map((publishNote,id)=>{

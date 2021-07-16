@@ -1,6 +1,10 @@
 import React ,{useState}from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import SaveIcon from '@material-ui/icons/Save';
+import CancelIcon from '@material-ui/icons/Cancel';
+import Zoom from '@material-ui/core/Zoom';
+import Fab from '@material-ui/core/Fab';
 
 function Pop(props) {
 
@@ -36,8 +40,9 @@ function Pop(props) {
 
     <div className="modal-content" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}} >
       <div className="modal-header">
-        {showCross && <span className="close" onClick={()=>props.closeFullNote(modifiedNote,props.index)}>&times;</span>}
-        <input type="text" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}} className="input-field" contentEditable="true" name="title" onChange={modify} value={modifiedNote.title} autoComplete="off"/>
+        {showCross && <span className="close" onClick={()=>props.closeFullNote(modifiedNote,props.index)}><Zoom in={true} ><Fab color="primary"> <SaveIcon /> < /Fab></Zoom></span>}
+        {showCross && <span className="close" onClick={()=>props.cancelEdit()}><Zoom in={true}><Fab color="secondary"> <CancelIcon /> < /Fab></Zoom></span>}
+        <input type="text" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}} className="input-field" contentEditable="true" name="title" onChange={modify} placeholder="Give a Title" value={modifiedNote.title} autoComplete="off"/>
       </div>
       <hr/>
       <div className="modal-body" style={{backgroundColor:modifiedNote.backgroundColor,color:modifiedNote.color}}>
@@ -48,7 +53,7 @@ function Pop(props) {
                 editor={ ClassicEditor }
                 data={modifiedNote.content}
                 config={{
-              /*  removePlugins:['MediaEmbed']*/
+
               toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList',  'insertTable',
          'tableColumn', 'tableRow', 'mergeTableCells',  '|', 'undo', 'redo']
 

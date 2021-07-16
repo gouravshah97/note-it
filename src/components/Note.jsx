@@ -1,22 +1,24 @@
 import React from "react";
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import NoteContent from './NoteContent.jsx';
+import EditIcon from '@material-ui/icons/Edit';
 
 function Note(props) {
 
 
 function triggerNote(event){
- const name=  (event.target.getAttribute('name'));
 
-  if(name){
     props.showFull(props.id);
-  }
+
 }
   return (
 
-    <div className="note" name="note" style={{backgroundColor:props.backgroundColor,color:props.color}} onClick={triggerNote}>
+    <div className="note" name="note" style={{backgroundColor:props.backgroundColor,color:props.color}}>
       <h1 name="title">{props.title.replace(/\n/g, " ").length<=24?props.title.replace(/\n/g, " "):props.title.replace(/\n/g, " ").substring(0,21)+"..."}</h1>
       <hr/>
-      <p className="size" name="content">{props.content.replace(/\n/g, " ").length<=80?props.content.replace(/\n/g, " "):props.content.replace(/\n/g, " ").substring(0,68)+"...Read More"}</p>
+      <NoteContent text={props.content}/>
+
+      <button style={{backgroundColor:props.backgroundColor,color:props.color}} onClick={triggerNote}><EditIcon /></button>
       <button style={{backgroundColor:props.backgroundColor,color:props.color}} onClick={
         ()=>props.delete(props.id)
       }><DeleteForeverOutlinedIcon/></button>
